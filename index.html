@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eshan Kumar Jain | Data Analyst Portfolio</title>
+    <a href="#" class="logo">
+    <div class="logo-icon">EJ</div>
+    <span class="logo-text">Eshan Jain</span>
+    </a>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #FF6B35; /* Vibrant orange */
+            --secondary: #00CED1; /* Bright teal */
+            --accent: #FFD700; /* Gold for highlights */
+            --dark: #0A0A0A;
+            --dark-gray: #1A1A1A;
+            --light-gray: #F5F5F5;
+            --text: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: "◉";
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gradient);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .hero-bg {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+            height: 70%;
+            background: var(--gradient);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            opacity: 0.1;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+            50% {
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            }
+            100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .skill {
+            background: var(--gradient);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .skill:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+            border: 2px solid transparent;
+            background: var(--gradient);
+            padding: 4px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+            border-radius: 12px;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--dark-gray);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 107, 53, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+            border-color: var(--primary);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-image::after {
+            opacity: 0.1;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-tag {
+            background-color: rgba(255, 107, 53, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+            background-color: rgba(255, 107, 53, 0.1);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: var(--dark-gray);
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: var(--gradient);
+        }
+
+        .contact-item:hover .contact-icon {
+            background: var(--dark);
+            color: var(--primary);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-text p {
+            color: var(--text-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .contact-form {
+            background-color: var(--dark-gray);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CV Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--dark-gray);
+            width: 90%;
+            max-width: 900px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(255, 107, 53, 0.3);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .modal-header {
+            padding: 25px;
+            background: var(--gradient);
+            color: var(--dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-body {
+            padding: 30px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .cv-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .cv-section:last-child {
+            border-bottom: none;
+        }
+
+        .cv-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .cv-item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .cv-item:hover {
+            border-left-color: var(--primary);
+            padding-left: 20px;
+        }
+
+        .cv-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        .cv-item .date {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .cv-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: var(--dark-gray);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: right 0.3s ease;
+                border-left: 2px solid var(--primary);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .hero-bg {
+                display: none;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Eshan Jain</a>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" id="viewCV">View CV</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Rest of your HTML content remains the same -->
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm Eshan Kumar Jain<br>Business Data Analyst</h1>
+                <p>Results-driven Data Analyst with 2+ years in fintech, currently pursuing MSc in Data Science & Analytics. Passionate about deriving insights from data and solving complex business problems.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#" class="btn btn-outline" id="downloadCV">Download CV</a>
+                </div>
+            </div>
+            <div class="hero-bg"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Business Data Analyst & Data Science Student</h3>
+                    <p>I'm a results-driven Business Data Analyst with 2+ years of experience in fintech, currently pursuing a Master's in Data Science & Analytics at Maynooth University. I have proven ability to manage the full software development life cycle (SDLC), translate business needs into technical solutions, and derive insights from data.</p>
+                    <p>When I'm not analyzing data or coding, you can find me exploring new machine learning techniques or contributing to data science communities.</p>
+                    <div class="skills">
+                        <div class="skill">Python</div>
+                        <div class="skill">SQL</div>
+                        <div class="skill">R</div>
+                        <div class="skill">Machine Learning</div>
+                        <div class="skill">Data Analysis</div>
+                        <div class="skill">JIRA</div>
+                        <div class="skill">Agile</div>
+                        <div class="skill">Statistical Analysis</div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="E:\Desktop\Data Science\My portfolio\Photo_univ.jpg" alt="Eshan Kumar Jain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Skin Disease Classification">
+                    </div>
+                    <div class="project-content">
+                        <h3>Multi-Class Skin Disease Classification</h3>
+                        <p>Developed an ensemble MobileNetV2 & ShuffleNet model for diagnosis with improved classification accuracy using CNN.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">CNN</span>
+                            <span class="project-tag">Machine Learning</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Coolboy-786/University-Final-year-project.git" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/Coolboy-786/University-Final-year-project.git" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Astronomy Club Website">
+                    </div>
+                    <div class="project-content">
+                        <h3>Ashlesha Astronomy Club Website</h3>
+                        <p>Designed and developed an interactive astronomy website for the VNIT Nagpur astronomy club.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Darshan110801/Astro-quiz.git" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/Darshan110801/Astro-quiz.git" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Banking System">
+                    </div>
+                    <div class="project-content">
+                        <h3>Student Banking System</h3>
+                        <p>Developed a comprehensive banking system for students with account management and transaction features.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">C++</span>
+                            <span class="project-tag">OOP</span>
+                            <span class="project-tag">File Handling</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Coolboy-786/student-Banking-Project.git" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/Coolboy-786/student-Banking-Project.git" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>Lucan / Maynooth, Ireland</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>eshanjain552@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+353 899816869</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>University Email</h4>
+                            <p>ESHANJAIN.2026.mumail.ie</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/eshan-kumar-jain-a140921b6/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Coolboy-786" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">Eshan Jain</a>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <p class="copyright">&copy; 2024 Eshan Kumar Jain. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CV Modal -->
+    <div class="modal" id="cvModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Eshan Kumar Jain - CV</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cv-section">
+                    <h3>Professional Summary</h3>
+                    <p>A results-driven <strong>Business Data Analyst</strong> with 2+ years of experience in fintech, currently pursuing a Master's in Data Science & Analytics. Proven ability to manage the full software development life cycle (SDLC), translate business needs into technical solutions, and derive insights from data. Seeking to leverage industry experience and academic training in machine learning and statistical analysis to solve complex data problems.</p>
+                </div>
+
+                <div class="cv-section">
+                    <h3>Education</h3>
+                    <div class="cv-item">
+                        <h4>MSc in Data Science and Analytics</h4>
+                        <div class="date">Maynooth University, Ireland (Expected Graduation: 2026)</div>
+                        <p>Relevant Coursework: <strong>Machine Learning, Statistical Methods, Data Mining, Data Analytics</strong></p>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Bachelor of Technology in Computer Science and Engineering</h4>
+                        <div class="date">VNIT Nagpur, India (2019 – 2023) | CGPA: 7.54/10</div>
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <h3>Work Experience</h3>
+                    <div class="cv-item">
+                        <h4>Manager - Tech & Digital Business Data Analyst</h4>
+                        <div class="date">HDFC Bank Ltd | July 2023 – July 2025 | Mumbai, India</div>
+                        <p>Spearheaded initiatives within <strong>API Integration</strong> and Customized Statements teams (approx daily volume <strong>1.5 million Euros</strong>) single handedly, managing project lifecycle using <strong>Agile, JIRA, and ServiceNow</strong>.</p>
+                        <p>Collaborated with <strong>50+</strong> cross-functional stakeholders to elicit, analyze, and validate requirements, reducing turnaround time by <strong>25%</strong> through improved requirement clarity and process streamlining.</p>
+                        <p>Translated and documented complex business requirements into detailed technical specifications for a team of <strong>5+</strong> developers and architects.</p>
+                        <p>Designed and executed SQL-based test plans, conducted UAT for multiple major releases, ensuring accurate and high-quality deliverables.</p>
+                        <p>Analyzed operational data to identify patterns, enabling data-driven decision-making and strategic insights.</p>
+                        <p>Optimized and standardized workflows across 3 business units to enhance efficiency and implement process improvements.</p>
+                        <p>Orchestrated all EPFO (Employees' Provident Fund Organisation) development projects, managing deliverables and timelines for government-facing portals, ensuring 100% regulatory compliance.</p>
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <h3>Skills</h3>
+                    <div class="skills">
+                        <div class="skill">Python</div>
+                        <div class="skill">SQL</div>
+                        <div class="skill">R</div>
+                        <div class="skill">C++</div>
+                        <div class="skill">MongoDB</div>
+                        <div class="skill">JIRA</div>
+                        <div class="skill">ServiceNow</div>
+                        <div class="skill">Linux</div>
+                        <div class="skill">Git</div>
+                        <div class="skill">Machine Learning</div>
+                        <div class="skill">Statistical Analysis</div>
+                        <div class="skill">Data Mining</div>
+                        <div class="skill">Data Visualization</div>
+                        <div class="skill">Predictive Modeling</div>
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <h3>Achievements</h3>
+                    <div class="cv-item">
+                        <p>Secured 99.57 percentile in JEE Main 2019; AIR 6253 in JEE Advanced 2019.</p>
+                        <p>Served as Vice President of Ashlesha Astronomy Club at VNIT Nagpur.</p>
+                        <p>Gold Medalist in International Mathematics & Science Olympiads (IMO & ISO).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="printCV">Print CV</button>
+                <button class="btn" id="downloadFromModal">Download CV</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // CV Modal functionality
+        const viewCV = document.getElementById('viewCV');
+        const downloadCV = document.getElementById('downloadCV');
+        const cvModal = document.getElementById('cvModal');
+        const closeModal = document.getElementById('closeModal');
+        const downloadFromModal = document.getElementById('downloadFromModal');
+        const printCV = document.getElementById('printCV');
+
+        // Open CV modal
+        viewCV.addEventListener('click', (e) => {
+            e.preventDefault();
+            cvModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close CV modal
+        closeModal.addEventListener('click', () => {
+            cvModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === cvModal) {
+                cvModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Download CV functionality
+        function downloadCVFile() {
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = 'Eshan_Kumar_Jain_CV_Data_Analyst.pdf'; // Replace with actual file path
+            link.download = 'Eshan_Kumar_Jain_CV.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        downloadCV.addEventListener('click', (e) => {
+            e.preventDefault();
+            downloadCVFile();
+        });
+
+        downloadFromModal.addEventListener('click', () => {
+            downloadCVFile();
+        });
+
+        // Print CV functionality
+        printCV.addEventListener('click', () => {
+            const modalContent = document.querySelector('.modal-content').innerHTML;
+            const originalContent = document.body.innerHTML;
+
+            document.body.innerHTML = modalContent;
+            window.print();
+            document.body.innerHTML = originalContent;
+            location.reload();
+        });
+
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
