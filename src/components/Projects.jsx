@@ -18,7 +18,7 @@ export default function Projects() {
       <div className="container">
         <motion.div variants={fadeUp(0)} initial="hidden" animate={inView ? 'show' : 'hidden'}>
           <p className="section-eyebrow">// 02 — Projects</p>
-          <h2 className="section-title">Selected Work</h2>
+          <h2 className="section-title">My Work</h2>
           <div className="section-bar" />
         </motion.div>
 
