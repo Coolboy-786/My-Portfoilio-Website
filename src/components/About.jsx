@@ -23,7 +23,7 @@ const achievements = [
   'VP — Ashlesha Astronomy Club, VNIT',
 ]
 
-const skillTags = ['Python', 'SQL', 'R', 'Machine Learning', 'Statistical Analysis', 'JIRA', 'Agile', 'MongoDB', 'Data Mining', 'Git', 'Linux', 'C++']
+const skillTags = ['Python', 'SQL', 'PostgreSQL', 'Power BI', 'DAX', 'Pandas', 'Scikit-learn', 'TensorFlow', 'Machine Learning', 'EDA', 'A/B Testing', 'ETL Pipelines', 'Seaborn', 'R', 'Git', 'Agile']
 
 export default function About() {
   const ref = useRef(null)
