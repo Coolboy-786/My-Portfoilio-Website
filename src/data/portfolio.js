@@ -123,7 +123,7 @@ export const skillGroups = [
   {
     label: 'Libraries & Tools',
     skills: [
-      { name: 'Scikit-learn / TensorFlow', pct: 82 },
+      { name: 'Scikit-learn / TensorFlow / PyTorch', pct: 82 },
       { name: 'Matplotlib / Seaborn / Plotly', pct: 85 },
       { name: 'Git, JIRA, ServiceNow', pct: 90 },
       { name: 'Agile / SDLC', pct: 92 },

@@ -14,17 +14,18 @@ function SkillBar({ name, pct, index, inView }) {
       variants={fadeUp(index)}
       initial="hidden"
       animate={inView ? 'show' : 'hidden'}
+      whileHover={{ x: 4 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
       <div className="skill-bar-header">
         <span className="skill-bar-name">{name}</span>
-        <span className="skill-bar-pct">{pct}%</span>
       </div>
       <div className="skill-bar-track">
         <motion.div
           className="skill-bar-fill"
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: pct / 100 } : { scaleX: 0 }}
-          transition={{ delay: index * 0.06 + 0.3, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: index * 0.06 + 0.3, duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
         />
       </div>
     </motion.div>
