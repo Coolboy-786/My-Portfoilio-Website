@@ -38,6 +38,18 @@ export default function Projects() {
               <div className="project-body">
                 <p className="project-num">{p.num} / 0{projects.length}</p>
                 <h3 className="project-title">{p.title}</h3>
+                {p.highlight && (
+                  <p style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.68rem',
+                    color: 'var(--gold)',
+                    letterSpacing: '0.06em',
+                    marginBottom: '10px',
+                    opacity: 0.85,
+                  }}>
+                    ◆ {p.highlight}
+                  </p>
+                )}
                 <p className="project-desc">{p.desc}</p>
                 <div className="project-tags">
                   {p.tags.map(t => <span key={t} className="tag tag-orange">{t}</span>)}

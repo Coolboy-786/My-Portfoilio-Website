@@ -183,10 +183,24 @@ section { padding: 110px 0; position: relative; }
   border: 1px solid rgba(0,229,255,0.2);
   color: var(--cyan);
   letter-spacing: 0.08em;
+  cursor: default;
+  transition: border-color 0.25s, box-shadow 0.25s, text-shadow 0.25s, background 0.25s;
+}
+.tag:hover {
+  border-color: var(--cyan);
+  background: rgba(0,229,255,0.06);
+  box-shadow: 0 0 14px rgba(0,229,255,0.35), inset 0 0 8px rgba(0,229,255,0.04);
+  text-shadow: 0 0 10px rgba(0,229,255,0.7);
 }
 .tag-orange {
   border-color: rgba(255,107,53,0.3);
   color: var(--orange);
+}
+.tag-orange:hover {
+  border-color: var(--orange);
+  background: rgba(255,107,53,0.06);
+  box-shadow: 0 0 14px rgba(255,107,53,0.35);
+  text-shadow: 0 0 10px rgba(255,107,53,0.7);
 }
 
 /* ── Navbar ── */
@@ -710,19 +724,7 @@ section { padding: 110px 0; position: relative; }
   margin-bottom: 14px;
   padding: 10px 12px;
   border: 1px solid transparent;
-  transition: border-color 0.3s, background 0.3s;
   cursor: default;
-}
-.skill-bar-item:hover {
-  border-color: rgba(0,229,255,0.15);
-  background: rgba(0,229,255,0.03);
-}
-.skill-bar-item:hover .skill-bar-name {
-  color: var(--cyan);
-  text-shadow: 0 0 18px rgba(0,229,255,0.6);
-}
-.skill-bar-item:hover .skill-bar-fill {
-  box-shadow: 0 0 10px var(--cyan-glow), 0 0 20px rgba(0,229,255,0.2);
 }
 .skill-bar-header {
   display: flex;
