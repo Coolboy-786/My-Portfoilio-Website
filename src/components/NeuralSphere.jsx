@@ -11,9 +11,10 @@ function Network() {
     const nodePos = new Float32Array(count * 3)
     const nodeColors = new Float32Array(count * 3)
 
-    const cyan = new THREE.Color('#00E5FF')
-    const orange = new THREE.Color('#FF6B35')
-    const gold = new THREE.Color('#FFD700')
+    const violet = new THREE.Color('#A78BFA')
+    const pink   = new THREE.Color('#F472B6')
+    const blue   = new THREE.Color('#60A5FA')
+    const white  = new THREE.Color('#E2E8F0')
 
     for (let i = 0; i < count; i++) {
       // Fibonacci sphere for even surface distribution
@@ -24,7 +25,7 @@ function Network() {
       nodePos[i * 3 + 2] = radius * Math.cos(phi)
 
       const r = Math.random()
-      const col = r < 0.65 ? cyan : r < 0.88 ? orange : gold
+      const col = r < 0.48 ? violet : r < 0.72 ? blue : r < 0.9 ? pink : white
       nodeColors[i * 3]     = col.r
       nodeColors[i * 3 + 1] = col.g
       nodeColors[i * 3 + 2] = col.b
@@ -78,7 +79,7 @@ function Network() {
           <bufferGeometry>
             <bufferAttribute attach="attributes-position" count={linePos.length / 3} array={linePos} itemSize={3} />
           </bufferGeometry>
-          <lineBasicMaterial color="#00E5FF" transparent opacity={0.12} depthWrite={false} />
+          <lineBasicMaterial color="#A78BFA" transparent opacity={0.1} depthWrite={false} />
         </lineSegments>
       )}
     </group>
@@ -94,7 +95,8 @@ export default function NeuralSphere() {
       dpr={[1, 1.5]}
     >
       <ambientLight intensity={0.3} />
-      <pointLight position={[5, 5, 5]} color="#00E5FF" intensity={0.6} />
+      <pointLight position={[5, 5, 5]} color="#A78BFA" intensity={0.7} />
+      <pointLight position={[-5, -3, 3]} color="#F472B6" intensity={0.35} />
       <Suspense fallback={null}>
         <Network />
       </Suspense>

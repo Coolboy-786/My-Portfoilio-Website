@@ -8,22 +8,26 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollProgress from './components/ScrollProgress'
 import CursorGlow from './components/CursorGlow'
+import StarField from './components/StarField'
 
 export default function App() {
   return (
     <>
-      <ScrollProgress />
-      <CursorGlow />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Experience />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
+      <StarField />
+      <div className="app-wrapper">
+        <ScrollProgress />
+        <CursorGlow />
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Experience />
+          <Skills />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }
