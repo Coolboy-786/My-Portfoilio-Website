@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { FiExternalLink, FiGithub } from 'react-icons/fi'
 import { projects } from '../data/portfolio'
+import Tag from './Tag'
 
 const fadeUp = (i = 0) => ({
   hidden: { opacity: 0, y: 36 },
@@ -52,7 +53,7 @@ export default function Projects() {
                 )}
                 <p className="project-desc">{p.desc}</p>
                 <div className="project-tags">
-                  {p.tags.map(t => <span key={t} className="tag tag-orange">{t}</span>)}
+                  {p.tags.map(t => <Tag key={t} color="orange">{t}</Tag>)}
                 </div>
                 <div className="project-links">
                   <a href={p.demo} target="_blank" rel="noopener noreferrer" className="project-link">

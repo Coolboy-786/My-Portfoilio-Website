@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { personal } from '../data/portfolio'
+import Tag from './Tag'
 
 const fadeUp = (i = 0) => ({
   hidden: { opacity: 0, y: 30 },
@@ -88,7 +89,7 @@ export default function About() {
             </motion.div>
 
             <motion.div className="about-tags" variants={fadeUp(5)} initial="hidden" animate={inView ? 'show' : 'hidden'}>
-              {skillTags.map(t => <span key={t} className="tag">{t}</span>)}
+              {skillTags.map(t => <Tag key={t}>{t}</Tag>)}
             </motion.div>
           </div>
         </div>

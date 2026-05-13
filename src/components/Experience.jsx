@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { experience, education } from '../data/portfolio'
+import Tag from './Tag'
 
 const fadeUp = (i = 0) => ({
   hidden: { opacity: 0, x: -24 },
@@ -22,7 +23,7 @@ function TimelineItem({ item, index, inView }) {
           {item.points.map((pt, i) => <li key={i}>{pt}</li>)}
         </ul>
         <div className="timeline-chips">
-          {item.chips.map(c => <span key={c} className="tag">{c}</span>)}
+          {item.chips.map(c => <Tag key={c}>{c}</Tag>)}
         </div>
       </div>
     </motion.div>
